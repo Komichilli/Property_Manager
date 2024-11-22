@@ -1,4 +1,7 @@
-namespace _PropertyManager
+using Microsoft.EntityFrameworkCore;
+using PropiedadesWEB.Data;
+
+namespace PropiedadWEB
 {
     public class Program
     {
@@ -8,6 +11,10 @@ namespace _PropertyManager
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            builder.Services.AddDbContext<PropiedadesContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("PropertyManagerDB"))
+            );
 
             var app = builder.Build();
 
