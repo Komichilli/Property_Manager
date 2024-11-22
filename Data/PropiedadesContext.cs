@@ -21,6 +21,32 @@ namespace PropiedadesWEB.Data
             optionsBuilder.UseSqlServer(
                 "Server=(localdb)\\mssqllocaldb;Database=PropertyManagerDB;Trusted_Connection=True;");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Contrato>()
+                .HasOne(c => c.Propiedad)
+                .WithMany(p => p.Contratos)
+                .HasForeignKey(c => c.PropiedadId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Contrato>()
+                .HasOne(c => c.Inquilino)
+                .WithMany(i => i.Contratos)
+                .HasForeignKey(c => c.InquilinoId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Pago>()
+                .HasOne(p => p.Contrato)
+                .WithMany(c => c.Pagos)
+                .HasForeignKey(p => p.ContratoId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Inquilino>()
+                .HasOne(i => i.Propiedad)
+                .WithMany(p => p.Inquilinos)
+                .HasForeignKey(i => i.PropiedadId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
 
     }
 
