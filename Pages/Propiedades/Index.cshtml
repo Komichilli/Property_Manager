@@ -1,0 +1,63 @@
+﻿@page
+@model _PropertyManager.Pages.Propiedades.IndexModel
+@{
+}
+<h1>Index Propiedades</h1>
+<p>
+	<a asp-page="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(Model => Model.Propiedades[0].Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(Model => Model.Propiedades[0].Direccion)
+			</th>
+			<th>
+				@Html.DisplayNameFor(Model => Model.Propiedades[0].TipoPropiedad)
+			</th>
+			<th>
+				@Html.DisplayNameFor(Model => Model.Propiedades[0].NumeroHabitaciones)
+			</th>
+			<th>
+				@Html.DisplayNameFor(Model => Model.Propiedades[0].PrecioAlquiler)
+			</th>
+			<th>
+				@Html.DisplayNameFor(Model => Model.Propiedades[0].Disponible)
+			</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Propiedades)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Direccion)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TipoPropiedad)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.NumeroHabitaciones)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PrecioAlquiler)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Disponible)
+				</td>
+				<td>
+					<a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+					<a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+				</td>
+
+			</tr>
+		}
+	</tbody>
+</table>
