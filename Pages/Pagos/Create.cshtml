@@ -1,0 +1,54 @@
+﻿@page
+@model PropiedadesWEB.Pages.Pagos.CreateModel
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>pagos</h4>
+<hr />
+<div class="container ">
+	<div class="row">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="row">
+			<div class="form-group col-4">
+					<label asp-for="Pagos.FechaPago" class="control-label"></label>
+					<input asp-for="Pagos.FechaPago" type="date" class="form-control" />
+					<span asp-validation-for="Pagos.FechaPago" class="text-danger"></span>
+			</div>
+			<div class="form-group col-3">
+					<label asp-for="Pagos.Monto" class="control-label"></label>
+					<input asp-for="Pagos.Monto" class="form-control" />
+					<span asp-validation-for="Pagos.Monto" class="text-danger"></span>
+			</div>
+			<div class="form-group col-3">
+					<label asp-for="Pagos.Estado" class="control-label"></label>
+					<select asp-for="Pagos.Estado" class="form-control">
+						<option value="" disabled selected>Seleccione</option>
+						<option value="Pendiente">Pendiente</option>
+						<option value="Completado">Completado</option>
+					</select>
+					<span asp-validation-for="Pagos.Estado" class="text-danger"></span>
+			</div>
+			<div class="form-group col-4">
+					<label asp-for="Pagos.ContratoId" class="control-label"></label>
+					<select asp-for="Pagos.ContratoId" class="form-control" asp-items="Model.Contratos">
+						<option value="" disabled selected>Seleccione</option>
+					</select>
+			</div>
+			<div class="form-group mt-3 text-center">
+				<input type="submit" value="Create" class="btn btn-success" />
+				<a asp-page="Index" class="btn btn-primary">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
+
