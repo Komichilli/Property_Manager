@@ -1,0 +1,53 @@
+﻿@page
+@model PropiedadesWEB.Pages.Pagos.IndexModel
+@{
+    ViewData["title"] = "Index Pagos";
+}
+<h1>Index Pagos</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Create new</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Pagos[0].FechaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Pagos[0].Monto)
+            </th>
+             <th>
+                @Html.DisplayNameFor(Model => Model.Pagos[0].Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.Pagos[0].ContratoId)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Item in Model.Pagos)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Item.FechaPago)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Item.Monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Item.ContratoId)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@Item.Id" class="btn btn-warning">Edit</a>
+                    <a asp-page="./Delete" asp-route-id="@Item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
