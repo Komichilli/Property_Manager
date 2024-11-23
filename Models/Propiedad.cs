@@ -12,7 +12,7 @@ namespace PropiedadesWEB.Models
         public string TipoPropiedad { get; set; }
         public int NumeroHabitaciones { get; set; }
         public int PrecioAlquiler { get; set; }
-        public bool Disponible { get; set; }
+        public string Disponible { get; set; }
         public ICollection<Inquilino> Inquilinos { get; set; }
         public ICollection<Contrato> Contratos { get; set; }
     }
