@@ -7,19 +7,19 @@
 
 <h4>Propiedad</h4>
 <hr />
-<div class="row">
-	<div class="col-md-4">
+<div class="container">
+	<div class="row">
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<input type="hidden" asp-for="Propiedad.Id" />
-
-			<div class="form-group">
+			<div class="row">
+			<div class="form-group col-4">
 				<label asp-for="Propiedad.Direccion" class="control-label"></label>
 				<input asp-for="Propiedad.Direccion" class="form-control" />
 				<span asp-validation-for="Propiedad.Direccion" class="text-danger"></span>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group col-4">
 				<label asp-for="Propiedad.TipoPropiedad" class="control-label"></label>
 				<select asp-for="Propiedad.TipoPropiedad" class="form-control">
 					<option value="Apartamento">Apartamento</option>
@@ -29,19 +29,19 @@
 				<span asp-validation-for="Propiedad.TipoPropiedad" class="text-danger"></span>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group col-4">
 				<label asp-for="Propiedad.NumeroHabitaciones" class="control-label"></label>
 				<input asp-for="Propiedad.NumeroHabitaciones" class="form-control" />
 				<span asp-validation-for="Propiedad.NumeroHabitaciones" class="text-danger"></span>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group col-6">
 				<label asp-for="Propiedad.PrecioAlquiler" class="control-label"></label>
 				<input asp-for="Propiedad.PrecioAlquiler" class="form-control" />
 				<span asp-validation-for="Propiedad.PrecioAlquiler" class="text-danger"></span>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group col-6">
 				<label asp-for="Propiedad.Disponible" class="control-label"></label>
 				<select asp-for="Propiedad.Disponible" class="form-control">
 					<option value="Si">Si</option>
@@ -49,11 +49,12 @@
 				</select>
 				<span asp-validation-for="Propiedad.Disponible" class="text-danger"></span>
 			</div>
-
-			<div class="form-group mt-3">
+			</div>
+			<div class="form-group mt-3  text-center">
 				<input type="submit" value="Save" class="btn btn-success" />
 				<a asp-page="./Index" class="btn btn-primary">Back to List</a>
 			</div>
+
 		</form>
 	</div>
 </div>

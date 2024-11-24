@@ -8,7 +8,7 @@ using PropiedadesWEB.Data;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Autentificacion.Pages.Account
+namespace PropiedadesWEB.Pages.Account
 {
 	public class LoginModel : PageModel
 	{

@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(Model => Model.Contratos[0].Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(Model => Model.Contratos[0].FechaInicio)
             </th>
             <th>
@@ -37,6 +40,9 @@
         @foreach (var Item in Model.Contratos)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Item.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => Item.FechaInicio)
                 </td>

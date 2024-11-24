@@ -7,43 +7,43 @@
 
 <h4>Inquilino</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container">
+    <div class="row">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
+            <div class="row">
+            <div class="form-group col-4">
                 <label asp-for="Inquilino.Nombre" class="control-label"></label>
                 <input asp-for="Inquilino.Nombre" class="form-control" />
                 <span asp-validation-for="Inquilino.Nombre" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-4">
                 <label asp-for="Inquilino.Apellido" class="control-label"></label>
                 <input asp-for="Inquilino.Apellido" class="form-control" />
                 <span asp-validation-for="Inquilino.Apellido" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-4">
                 <label asp-for="Inquilino.Telefono" class="control-label"></label>
                 <input asp-for="Inquilino.Telefono" class="form-control" />
                 <span asp-validation-for="Inquilino.Telefono" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label asp-for="Inquilino.Email" class="control-label"></label>
                 <input asp-for="Inquilino.Email" class="form-control" />
                 <span asp-validation-for="Inquilino.Email" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-6">
                 <label asp-for="Inquilino.PropiedadId" class="control-label"></label>
                 <select asp-for="Inquilino.PropiedadId" class="form-control" asp-items="Model.Propiedades">
                     <option value="" disabled selected>Seleccione</option>
                 </select>
             </div>
-
-            <div class="form-group mt-3">
+            </div>
+            <div class="form-group mt-3 text-center">
                 <input type="submit" value="Create" class="btn btn-success" />
                 <a asp-page="./Index" class="btn btn-primary">Back to List</a>
             </div>

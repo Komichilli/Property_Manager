@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Server.IIS;
 
-namespace _PropertyManager.Pages.Account
+namespace PropiedadesWEB.Pages.Account
 {
     public class LogoutModel : PageModel
     {

@@ -13,7 +13,7 @@
 		<form method="post">
 			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 			<div class="row">
-			<div class="form-group col-4">
+			<div class="form-group col-3">
 					<label asp-for="Pagos.FechaPago" class="control-label"></label>
 					<input asp-for="Pagos.FechaPago" type="date" class="form-control" />
 					<span asp-validation-for="Pagos.FechaPago" class="text-danger"></span>
@@ -32,7 +32,7 @@
 					</select>
 					<span asp-validation-for="Pagos.Estado" class="text-danger"></span>
 			</div>
-			<div class="form-group col-4">
+			<div class="form-group col-3">
 					<label asp-for="Pagos.ContratoId" class="control-label"></label>
 					<select asp-for="Pagos.ContratoId" class="form-control" asp-items="Model.Contratos">
 						<option value="" disabled selected>Seleccione</option>
