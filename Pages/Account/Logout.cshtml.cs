@@ -12,8 +12,6 @@ namespace _PropertyManager.Pages.Account
         {
             await HttpContext.SignOutAsync("MyCookieAuth");
             return RedirectToPage("/Index");
-
-
         }
     }
 }

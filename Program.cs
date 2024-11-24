@@ -12,17 +12,15 @@ namespace PropiedadWEB
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.AddDbContext<PropiedadesContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("PropertyManagerDB"))
-            );
-
-            builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
-            {
+            builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options => {
                 options.Cookie.Name = "MyCookieAuth";
-                options.LoginPath = "/Account/Login"; // Si no esta autentificado, cargue la pagina Login
+                options.LoginPath = "/Account/Login";
 
             });
 
+            builder.Services.AddDbContext<PropiedadesContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("PropertyManagerDB"))
+            );
 
 
             var app = builder.Build();
