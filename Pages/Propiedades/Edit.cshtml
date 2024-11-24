@@ -1,0 +1,58 @@
+﻿@page
+@model _PropertyManager.Pages.Propiedades.EditModel
+@{
+	ViewData["Title"] = "Edit Propiedad";
+}
+<h1>Edit Propiedad</h1>
+
+<h4>Propiedad</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Propiedad.Id" />
+
+			<div class="form-group">
+				<label asp-for="Propiedad.Direccion" class="control-label"></label>
+				<input asp-for="Propiedad.Direccion" class="form-control" />
+				<span asp-validation-for="Propiedad.Direccion" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Propiedad.TipoPropiedad" class="control-label"></label>
+				<input asp-for="Propiedad.TipoPropiedad" class="form-control" />
+				<span asp-validation-for="Propiedad.TipoPropiedad" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Propiedad.NumeroHabitaciones" class="control-label"></label>
+				<input asp-for="Propiedad.NumeroHabitaciones" class="form-control" />
+				<span asp-validation-for="Propiedad.NumeroHabitaciones" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Propiedad.PrecioAlquiler" class="control-label"></label>
+				<input asp-for="Propiedad.PrecioAlquiler" class="form-control" />
+				<span asp-validation-for="Propiedad.PrecioAlquiler" class="text-danger"></span>
+			</div>
+
+			<div class="form-group">
+				<label asp-for="Propiedad.Disponible" class="control-label"></label>
+				<input asp-for="Propiedad.Disponible" class="form-check-input" type="form-control" />
+				<span asp-validation-for="Propiedad.Disponible" class="text-danger"></span>
+			</div>
+
+			<div class="form-group mt-3">
+				<input type="submit" value="Save" class="btn btn-success" />
+				<a asp-page="./Index" class="btn btn-primary">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
