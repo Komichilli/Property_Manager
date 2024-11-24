@@ -4,43 +4,50 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Identity.Client.Platforms.Features.DesktopOs;
 using System.Security.Claims;
+using PropiedadesWEB.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Autentificacion.Pages.Account
 {
-    public class LoginModel : PageModel
-    {
-        [BindProperty]
+	public class LoginModel : PageModel
+	{
+		private readonly PropiedadesContext _context;
 
-        public User User { get; set; }
-        public void OnGet()
-        {
-        }
+		public LoginModel(PropiedadesContext context)
+		{
+			_context = context;
+		}
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid) return Page();
+		[BindProperty]
+		public User User { get; set; } = default!;
 
-            if (User.Email == "correo@gmail.com" && User.Password == "12345")
-            {
-                //Se crea los Claim, datos a almacenar en la Cookie
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, "admin"),
-                    new Claim(ClaimTypes.Email,User.Email),
-                };
-                //Se Asocia los claims creados a un nombre de una Cookie
-                var identity = new ClaimsIdentity(claims, "MyCookieAuth");
-                //Se agrega la identidad creada al ClaimsPrincipal de la aplicacion
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
-
-                //Se registra exitosamente la autentificacion y se crea la cookie en el navegador
-                await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
-                return RedirectToPage("/index");
-            }
-            return Page();
-
-        }
+		public async Task<IActionResult> OnPostAsync()
+		{
+			if (!ModelState.IsValid) return Page();
 
 
-    }
+			var user = await _context.User.FirstOrDefaultAsync(u => u.Email == User.Email && u.Password == User.Password);
+
+			if (user != null)
+			{
+
+				var claims = new List<Claim>
+				{
+					new Claim(ClaimTypes.Email, user.Email),
+				};
+
+				var identity = new ClaimsIdentity(claims, "MyCookieAuth");
+				ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
+
+
+				await HttpContext.SignInAsync("MyCookieAuth", claimsPrincipal);
+				return RedirectToPage("/Index");
+			}
+
+
+			ModelState.AddModelError(string.Empty, "Credenciales inválidas.");
+			return Page();
+		}
+	}
 }
