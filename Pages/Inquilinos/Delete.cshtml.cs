@@ -17,23 +17,41 @@ namespace _PropertyManager.Pages.Inquilinos
         [BindProperty]
         public Inquilino Inquilino { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null || _context.Inquilinos == null)
-            {
-                return NotFound();
-            }
+		public async Task<IActionResult> OnGetAsync(int? id)
+		{
+			if (id == null || _context.Contratos == null)
+			{
+				return NotFound();
+			}
+			var inquilino = await _context.Inquilinos.FirstOrDefaultAsync(m => m.Id == id);
 
-            var inquilino = await _context.Inquilinos.FirstOrDefaultAsync(m => m.Id == id);
+			if (inquilino == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				Inquilino = inquilino;
+			}
+			return Page();
+		}
 
-            if (inquilino != null)
-            {
-                Inquilino = inquilino;
-                _context.Inquilinos.Remove(inquilino);
-                await _context.SaveChangesAsync();
-            }
+		public async Task<IActionResult> OnPostAsync(int? id)
+		{
+			if (id == null || _context.Inquilinos == null)
+			{
+				return NotFound();
+			}
+			var inquilino = await _context.Inquilinos.FindAsync(id);
 
-            return RedirectToPage("./Index");
-        }
-    }
+			if (inquilino != null)
+			{
+				Inquilino = inquilino;
+				_context.Inquilinos.Remove(inquilino);
+				await _context.SaveChangesAsync();
+			}
+
+			return RedirectToPage("./Index");
+		}
+	}
 }

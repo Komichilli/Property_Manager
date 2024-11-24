@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PropiedadesWEB.Data;
 using PropiedadesWEB.Models;
@@ -17,9 +18,12 @@ namespace _PropertyManager.Pages.Inquilinos
 
         [BindProperty]
         public Inquilino Inquilino { get; set; } = default!;
+        public SelectList Propiedades { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            Propiedades = new SelectList(await _context.Propiedades.ToListAsync(), "Id", "Id");
+
             if (id == null || _context.Inquilinos == null)
             {
                 return NotFound();

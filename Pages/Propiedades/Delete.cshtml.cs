@@ -17,23 +17,41 @@ namespace _PropertyManager.Pages.Propiedades
         [BindProperty]
         public Propiedad Propiedad { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null || _context.Propiedades == null)
-            {
-                return NotFound();
-            }
+		public async Task<IActionResult> OnGetAsync(int? id)
+		{
+			if (id == null || _context.Propiedades == null)
+			{
+				return NotFound();
+			}
+			var propiedad = await _context.Propiedades.FirstOrDefaultAsync(m => m.Id == id);
 
-            var propiedad = await _context.Propiedades.FirstOrDefaultAsync(m => m.Id == id);
+			if (propiedad == null)
+			{
+				return NotFound();
+			}
+			else
+			{
+				Propiedad = propiedad;
+			}
+			return Page();
+		}
 
-            if (propiedad != null)
-            {
-                Propiedad = propiedad;
-                _context.Propiedades.Remove(propiedad);
-                await _context.SaveChangesAsync();
-            }
+		public async Task<IActionResult> OnPostAsync(int? id)
+		{
+			if (id == null || _context.Propiedades == null)
+			{
+				return NotFound();
+			}
+			var propiedad = await _context.Propiedades.FindAsync(id);
 
-            return RedirectToPage("./Index");
-        }
-    }
+			if (propiedad != null)
+			{
+				Propiedad = propiedad;
+				_context.Propiedades.Remove(propiedad);
+				await _context.SaveChangesAsync();
+			}
+
+			return RedirectToPage("./Index");
+		}
+	}
 }

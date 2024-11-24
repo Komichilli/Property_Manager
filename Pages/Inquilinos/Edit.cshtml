@@ -40,8 +40,8 @@
 
             <div class="form-group">
                 <label asp-for="Inquilino.PropiedadId" class="control-label"></label>
-                <input asp-for="Inquilino.PropiedadId" class="form-control" />
-                <span asp-validation-for="Inquilino.PropiedadId" class="text-danger"></span>
+                <select asp-for="Inquilino.PropiedadId" class="form-control" asp-items="Model.Propiedades">
+                </select>
             </div>
 
             <div class="form-group mt-3">

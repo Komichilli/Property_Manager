@@ -20,7 +20,12 @@
 
             <div class="form-group">
                 <label asp-for="Propiedad.TipoPropiedad" class="control-label"></label>
-                <input asp-for="Propiedad.TipoPropiedad" class="form-control" />
+                <select asp-for="Propiedad.TipoPropiedad" class="form-control">
+                    <option value="" disabled selected>Seleccione</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Comercial">Comercial</option>
+                </select>
                 <span asp-validation-for="Propiedad.TipoPropiedad" class="text-danger"></span>
             </div>
 
@@ -38,7 +43,11 @@
 
             <div class="form-group">
                 <label asp-for="Propiedad.Disponible" class="control-label"></label>
-                <input asp-for="Propiedad.Disponible" class="form-control" />
+                <select asp-for="Propiedad.Disponible" class="form-control">
+                    <option value="" disabled selected>Seleccione</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
+                </select>
                 <span asp-validation-for="Propiedad.Disponible" class="text-danger"></span>
             </div>
 
