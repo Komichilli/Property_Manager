@@ -7,8 +7,8 @@ using PropiedadesWEB.Models;
 
 namespace PropiedadesWEB.Pages.Pagos
 {
-	
-	public class IndexModel : PageModel
+    [Authorize]
+    public class IndexModel : PageModel
     {
        
         private readonly PropiedadesContext _context;
