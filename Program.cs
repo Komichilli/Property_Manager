@@ -16,6 +16,15 @@ namespace PropiedadWEB
                 options.UseSqlServer(builder.Configuration.GetConnectionString("PropertyManagerDB"))
             );
 
+            builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
+            {
+                options.Cookie.Name = "MyCookieAuth";
+                options.LoginPath = "/Account/Login"; // Si no esta autentificado, cargue la pagina Login
+
+            });
+
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

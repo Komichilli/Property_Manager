@@ -7,10 +7,13 @@ namespace PropiedadWEB.Models
 
         public int Id { get; set; }
 
+        [Required] // Verificar que se importo using System.ComponentModet.DataAnotations
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
         [Required]
-        public string? Email { get; set; }
-   
-        [Required]
-        public string? Password { get; set; }
+        [DataType(DataType.Password)]
+
+        public string Password { get; set; }
     }
 }
