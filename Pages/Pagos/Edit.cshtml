@@ -1,0 +1,52 @@
+﻿@page
+@model PropiedadesWEB.Pages.Pagos.EditModel
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Pagos</h4>
+<hr />
+<div class="container">
+	<div class="row">
+		<form method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Pago.Id" />
+			<div class="row">
+				<div class="form-group col-3">
+					<label asp-for="Pago.FechaPago" class="control-label"></label>
+					<input asp-for="Pago.FechaPago" class="form-control" />
+					<span asp-validation-for="Pago.FechaPago" class="text-danger"></span>
+			</div>
+				<div class="form-group col-3">
+					<label asp-for="Pago.Monto" class="control-label"></label>
+					<input asp-for="Pago.Monto" class="form-control" />
+					<span asp-validation-for="Pago.Monto" class="text-danger"></span>
+			</div>
+				<div class="form-group col-3">
+					<label asp-for="Pago.Estado" class="control-label"></label>
+					<select asp-for="Pago.Estado" class="form-control">
+						<option value="Pendiente">Pendiente</option>
+						<option value="Completado">Completado</option>
+					</select>
+					<span asp-validation-for="Pago.Estado" class="text-danger"></span>
+			</div>
+				<div class="form-group col-3">
+					<label asp-for="Pago.ContratoId" class="control-label"></label>
+					<select asp-for="Pago.ContratoId" class="form-control" asp-items="Model.Contratos">
+					</select>
+			</div>
+			<div class="form-group mt-3 text-center">
+				<input type="submit" value="Save" class="btn btn-success" />
+				<a asp-page="./Index" class="btn btn-primary">Back to List</a>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
